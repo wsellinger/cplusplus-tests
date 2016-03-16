@@ -1,9 +1,11 @@
 #include <list>
+#include <vector>
+#include <algorithm>
 #include "ProjectEulerProblems.h"
 
 using namespace std;
 
-int problem_001_SumOfMultiples(list<int> factorList, int limit)
+int problem_001_SumOfMultiples_solution01(list<int> factorList, int limit)
 {
 	int sum = 0;
 
@@ -19,6 +21,46 @@ int problem_001_SumOfMultiples(list<int> factorList, int limit)
 				break;
 			}
 		}
+	}
+
+	return sum;
+}
+
+int problem_001_SumOfMultiples_solution02(vector<int> factorVector, int limit)
+{
+	int sum = 0;
+	int factor = 0;
+	int multiple = 0;
+	vector<int> multipleVector;
+
+	sort(factorVector.begin(), factorVector.end());
+
+	for (vector<int>::iterator vectorIterator = factorVector.begin(); vectorIterator != factorVector.end(); vectorIterator++)
+	{
+		factor = 1;
+
+		while (true)
+		{
+			multiple = *vectorIterator * factor;
+			
+			if (multiple < limit)
+			{
+				multipleVector.push_back(multiple);
+				factor++;
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+
+	sort(multipleVector.begin(), multipleVector.end());
+	multipleVector.erase(unique(multipleVector.begin(), multipleVector.end()), multipleVector.end());
+
+	for (vector<int>::iterator listIterator = multipleVector.begin(); listIterator != multipleVector.end(); listIterator++)
+	{
+		sum += *listIterator;
 	}
 
 	return sum;
