@@ -41,13 +41,20 @@ int problem_001_sumOfMultiples_solution02(vector<int> factorVector, int limit)
 		factor = 0;
 		multiple = 0;
 
-		do
+		while (true)
 		{
-			multipleVector.push_back(multiple);
-			factor++;
-
 			multiple = *vectorIterator * factor;
-		} while (multiple < limit);
+
+			if (multiple < limit)
+			{
+				multipleVector.push_back(multiple);
+				factor++;
+			}
+			else 
+			{
+				break;
+			}
+		}
 		
 	}
 
