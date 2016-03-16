@@ -1,0 +1,5 @@
+/Debug
+/cplusplus-tests/Debug
+/*.opensdf
+/*.sdf
+/.vs/cplusplus-tests/v14/*.suo
