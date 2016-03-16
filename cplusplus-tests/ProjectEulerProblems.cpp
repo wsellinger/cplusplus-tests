@@ -1,11 +1,12 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include <iostream>
 #include "ProjectEulerProblems.h"
 
 using namespace std;
 
-int problem_001_SumOfMultiples_solution01(list<int> factorList, int limit)
+int problem_001_sumOfMultiples_solution01(list<int> factorList, int limit)
 {
 	int sum = 0;
 
@@ -26,7 +27,7 @@ int problem_001_SumOfMultiples_solution01(list<int> factorList, int limit)
 	return sum;
 }
 
-int problem_001_SumOfMultiples_solution02(vector<int> factorVector, int limit)
+int problem_001_sumOfMultiples_solution02(vector<int> factorVector, int limit)
 {
 	int sum = 0;
 	int factor = 0;
@@ -37,22 +38,17 @@ int problem_001_SumOfMultiples_solution02(vector<int> factorVector, int limit)
 
 	for (vector<int>::iterator vectorIterator = factorVector.begin(); vectorIterator != factorVector.end(); vectorIterator++)
 	{
-		factor = 1;
+		factor = 0;
+		multiple = 0;
 
-		while (true)
+		do
 		{
+			multipleVector.push_back(multiple);
+			factor++;
+
 			multiple = *vectorIterator * factor;
-			
-			if (multiple < limit)
-			{
-				multipleVector.push_back(multiple);
-				factor++;
-			}
-			else
-			{
-				break;
-			}
-		}
+		} while (multiple < limit);
+		
 	}
 
 	sort(multipleVector.begin(), multipleVector.end());
@@ -61,6 +57,18 @@ int problem_001_SumOfMultiples_solution02(vector<int> factorVector, int limit)
 	for (vector<int>::iterator listIterator = multipleVector.begin(); listIterator != multipleVector.end(); listIterator++)
 	{
 		sum += *listIterator;
+	}
+
+	return sum;
+}
+
+int problem_002_evenFibonacciNumbers(int termOne, int termTwo, int limit)
+{
+	int sum = 0;
+	
+	while (true)
+	{
+
 	}
 
 	return sum;
