@@ -8,6 +8,8 @@
 
 using namespace std;
 
+bool isPrime(long long input);
+
 int problem_001_sumMultiples_solution01(list<int> factorList, int limit)
 {
 	int sum = 0;
@@ -93,4 +95,36 @@ int problem_002_sumEvenFibonacciNumbers(int limit)
 	}
 
 	return accumulate(termVector.begin(), termVector.end(), 0);
+}
+
+long long problem_003_largestPrimeFactor(long long multiple)
+{
+	long double factor = 0;
+
+	for (long long i = 1; i < multiple; i++)
+	{
+		factor = long double (multiple) / i;
+
+		if (floor(factor) == factor && isPrime(factor))
+		{
+			return factor;
+		}
+	}
+
+	return 1;
+}
+
+bool isPrime(long long input)
+{
+	long long sqrtInput = sqrt(input);
+
+	for (long long i = 2; i <= sqrtInput; i++)
+	{
+		if (input % i == 0)
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
