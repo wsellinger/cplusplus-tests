@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <numeric>
+#include <cmath>
 #include "ProjectEulerProblems.h"
 
 #include <iostream>
@@ -9,6 +10,7 @@
 using namespace std;
 
 bool isPrime(long long input);
+bool isPalindrome(int input);
 
 int problem_001_sumMultiples_solution01(list<int> factorList, int limit)
 {
@@ -18,9 +20,9 @@ int problem_001_sumMultiples_solution01(list<int> factorList, int limit)
 
 	for (int i = *factorList.begin(); i < limit; i++)
 	{
-		for (list<int>::iterator listIterator = factorList.begin(); listIterator != factorList.end(); listIterator++)
+		for (list<int>::iterator iterator = factorList.begin(); iterator != factorList.end(); iterator++)
 		{
-			if (i % *listIterator == 0)
+			if (i % *iterator == 0)
 			{
 				sum += i;
 				break;
@@ -39,14 +41,14 @@ int problem_001_sumMultiples_solution02(vector<int> factorVector, int limit)
 
 	sort(factorVector.begin(), factorVector.end());
 
-	for (vector<int>::iterator vectorIterator = factorVector.begin(); vectorIterator != factorVector.end(); vectorIterator++)
+	for (vector<int>::iterator iterator = factorVector.begin(); iterator != factorVector.end(); iterator++)
 	{
 		factor = 0;
 		multiple = 0;
 
 		while (true)
 		{
-			multiple = *vectorIterator * factor;
+			multiple = *iterator * factor;
 
 			if (multiple < limit)
 			{
@@ -121,6 +123,53 @@ bool isPrime(long long input)
 	for (long long i = 2; i <= sqrtInput; i++)
 	{
 		if (input % i == 0)
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+int problem_004_largestPalindrome(int numDigits)
+{
+	int min = pow(10, numDigits - 1);
+	int max = pow(10, numDigits) - 1;
+	int multiple = 0;
+	vector<int> palindromeVector;
+
+	for (int i = min; i <= max; i++)
+	{
+		for (int j = i; j <= max; j++)
+		{
+			multiple = i * j;
+
+			if (isPalindrome(multiple))
+			{
+				palindromeVector.push_back(multiple);
+			}
+		}
+	}
+
+	//sort(palindromeVector.begin(), palindromeVector.end());
+	return *max_element(palindromeVector.begin(), palindromeVector.end());
+
+	//return palindromeVector.back();
+}
+
+bool isPalindrome(int input)
+{
+	vector<int> intVector;
+
+	while (input > 0)
+	{
+		intVector.push_back(input % 10);
+		input /= 10;
+	}
+
+	for (size_t i = 0; i < intVector.size() / 2; i++)
+	{
+		if (intVector[i] != intVector[intVector.size() - i - 1])
 		{
 			return false;
 		}
