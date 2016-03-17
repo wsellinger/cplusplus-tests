@@ -151,10 +151,7 @@ int problem_004_largestPalindrome(int numDigits)
 		}
 	}
 
-	//sort(palindromeVector.begin(), palindromeVector.end());
 	return *max_element(palindromeVector.begin(), palindromeVector.end());
-
-	//return palindromeVector.back();
 }
 
 bool isPalindrome(int input)
