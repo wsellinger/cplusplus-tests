@@ -11,6 +11,7 @@ using namespace std;
 
 bool isPrime(long long input);
 bool isPalindrome(int input);
+bool isEvenlyDivisibleByRange(int multiple, int min, int max);
 
 int problem_001_sumMultiples_solution01(list<int> factorList, int limit)
 {
@@ -46,7 +47,7 @@ int problem_001_sumMultiples_solution02(vector<int> factorVector, int limit)
 		factor = 0;
 		multiple = 0;
 
-		while (true)
+		while (multiple < limit)
 		{
 			multiple = *iterator * factor;
 
@@ -54,10 +55,6 @@ int problem_001_sumMultiples_solution02(vector<int> factorVector, int limit)
 			{
 				multipleVector.push_back(multiple);
 				factor++;
-			}
-			else 
-			{
-				break;
 			}
 		}
 		
@@ -74,9 +71,9 @@ int problem_002_sumEvenFibonacciNumbers(int limit)
 	int termOne = 0;
 	int termTwo = 1;
 	int currentTerm = 0;
-	vector<int> termVector;
+	int sum = 0;
 
-	while (true)
+	while (currentTerm <= limit)
 	{
 		currentTerm = termOne + termTwo;
 		
@@ -84,19 +81,15 @@ int problem_002_sumEvenFibonacciNumbers(int limit)
 		{
 			if (currentTerm % 2 == 0)
 			{
-				termVector.push_back(currentTerm);
+				sum += currentTerm;
 			}
-		}
-		else
-		{
-			break;
 		}
 
 		termOne = termTwo;
 		termTwo = currentTerm;
 	}
 
-	return accumulate(termVector.begin(), termVector.end(), 0);
+	return sum;
 }
 
 long long problem_003_largestPrimeFactor(long long multiple)
@@ -167,6 +160,31 @@ bool isPalindrome(int input)
 	for (size_t i = 0; i < intVector.size() / 2; i++)
 	{
 		if (intVector[i] != intVector[intVector.size() - i - 1])
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+int problem_005_smallestEvenlyDivisible(int min, int max)
+{
+	int multiple = max;
+
+	while (!isEvenlyDivisibleByRange(multiple, min, max))
+	{
+		multiple++;
+	}
+
+	return multiple;
+}
+
+bool isEvenlyDivisibleByRange(int multiple, int min, int max)
+{
+	for (int i = min; i < max; i++)
+	{
+		if (multiple % i != 0)
 		{
 			return false;
 		}
