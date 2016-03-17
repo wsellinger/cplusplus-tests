@@ -94,13 +94,13 @@ int problem_002_sumEvenFibonacciNumbers(int limit)
 
 long long problem_003_largestPrimeFactor(long long multiple)
 {
-	long double factor = 0;
+	long long factor = 0;
 
 	for (long long i = 1; i < multiple; i++)
 	{
-		factor = long double (multiple) / i;
+		factor = multiple / i;
 
-		if (floor(factor) == factor && isPrime(factor))
+		if (multiple % i == 0 && isPrime(factor))
 		{
 			return factor;
 		}
@@ -111,17 +111,22 @@ long long problem_003_largestPrimeFactor(long long multiple)
 
 bool isPrime(long long input)
 {
-	long long sqrtInput = sqrt(input);
-
-	for (long long i = 2; i <= sqrtInput; i++)
+	if (input > 1)
 	{
-		if (input % i == 0)
+		long long sqrtInput = sqrt(input);
+
+		for (long long i = 2; i <= sqrtInput; i++)
 		{
-			return false;
+			if (input % i == 0)
+			{
+				return false;
+			}
 		}
+
+		return true;
 	}
 
-	return true;
+	return false;
 }
 
 int problem_004_largestPalindrome(int numDigits)
