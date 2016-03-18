@@ -12,6 +12,8 @@ using namespace std;
 bool isPrime(long long input);
 bool isPalindrome(int input);
 bool isEvenlyDivisibleByRange(int multiple, int min, int max);
+int sumSquares(int limit);
+int squareSums(int limit);
 
 int problem_001_sumMultiples_solution01(list<int> factorList, int limit)
 {
@@ -196,4 +198,51 @@ bool isEvenlyDivisibleByRange(int multiple, int min, int max)
 	}
 
 	return true;
+}
+
+int problem_006_sumSquareDifference(int limit)
+{
+	return squareSums(limit) - sumSquares(limit);
+}
+
+int sumSquares(int limit)
+{
+	int sum = 0;
+
+	for (int i = 1; i <= limit; i++)
+	{
+		sum += pow(i, 2);
+	}
+
+	return sum;
+}
+
+int squareSums(int limit)
+{
+	int sum = 0;
+
+	for (int i = 1; i <= limit; i++)
+	{
+		sum += i;
+	}
+
+	return pow(sum, 2);
+}
+
+int problem_007_nthPrime(int n)
+{
+	int numPrimes = 0;
+	int integer = 0;
+
+	while (numPrimes != n)
+	{
+		integer++;
+
+		if (isPrime(integer))
+		{
+			numPrimes++;
+		}
+	}
+
+	return integer;
 }
