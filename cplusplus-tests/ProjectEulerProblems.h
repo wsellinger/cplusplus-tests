@@ -2,6 +2,7 @@
 
 #include <list>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -12,4 +13,5 @@ long long problem_003_largestPrimeFactor(long long multiple);
 int problem_004_largestPalindrome(int numDigits);
 int problem_005_smallestEvenlyDivisible(int min, int max);
 int problem_006_sumSquareDifference(int limit);
-int problem_007_nthPrime(int n);
+int problem_007_nthPrime(int n); 
+long long problem_008_largestProductInSeries(string input, int seriesLength);

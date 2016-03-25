@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <numeric>
 #include <cmath>
+#include <string>
 #include "ProjectEulerProblems.h"
 
 #include <iostream>
@@ -245,4 +246,27 @@ int problem_007_nthPrime(int n)
 	}
 
 	return integer;
+}
+
+long long problem_008_largestProductInSeries(string input, int seriesLength)
+{
+	long long product = 0;
+	long long largestProduct = 0;
+
+	for (size_t i = 0; i < input.size() - seriesLength; i++)
+	{
+		product = 1;
+
+		for (size_t j = 0; j < seriesLength; j++)
+		{
+			product *= input[i + j] - '0';
+		}
+		cout << product << endl;
+		if (product > largestProduct)
+		{
+			largestProduct = product;
+		}
+	}
+
+	return largestProduct;
 }
