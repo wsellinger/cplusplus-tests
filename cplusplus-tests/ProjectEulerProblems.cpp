@@ -261,7 +261,7 @@ long long problem_008_largestProductInSeries(string input, int seriesLength)
 		{
 			product *= input[i + j] - '0';
 		}
-		cout << product << endl;
+		
 		if (product > largestProduct)
 		{
 			largestProduct = product;
@@ -269,4 +269,24 @@ long long problem_008_largestProductInSeries(string input, int seriesLength)
 	}
 
 	return largestProduct;
+}
+
+int problem_009_specialPythagoreanTriplet(int tripletSum)
+{
+	int c = 0;
+
+	for (size_t a = 1; a < tripletSum - 1; a++)
+	{
+		for (size_t b = a + 1; b < tripletSum; b++)
+		{
+			c = tripletSum - a - b;
+
+			if (pow(a, 2) + pow(b, 2) == pow(c, 2))
+			{
+				return a * b * c;
+			}
+		}
+	}
+
+	return 0;
 }

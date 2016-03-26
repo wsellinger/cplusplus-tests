@@ -15,3 +15,4 @@ int problem_005_smallestEvenlyDivisible(int min, int max);
 int problem_006_sumSquareDifference(int limit);
 int problem_007_nthPrime(int n); 
 long long problem_008_largestProductInSeries(string input, int seriesLength);
+int problem_009_specialPythagoreanTriplet(int tripletSum);

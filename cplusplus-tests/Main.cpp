@@ -16,5 +16,6 @@ int main()
 	//cout << problem_005_smallestEvenlyDivisible(1, 20) << endl;
 	//cout << problem_006_sumSquareDifference(100) << endl;
 	//cout << problem_007_nthPrime(10001) << endl;
-	cout << problem_008_largestProductInSeries(eulerInput008, 13) << endl;
+	//cout << problem_008_largestProductInSeries(eulerInput008, 13) << endl;
+	cout << problem_009_specialPythagoreanTriplet(1000) << endl;
 }
