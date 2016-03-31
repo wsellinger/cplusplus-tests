@@ -6,6 +6,8 @@
 
 using namespace std;
 
+extern string const eulerInput008;
+
 int problem_001_sumMultiples_solution01(list<int> factorList, int limit);
 int problem_001_sumMultiples_solution02(vector<int> factorList, int limit);
 int problem_002_sumEvenFibonacciNumbers(int limit);
@@ -16,3 +18,4 @@ int problem_006_sumSquareDifference(int limit);
 int problem_007_nthPrime(int n); 
 long long problem_008_largestProductInSeries(string input, int seriesLength);
 int problem_009_specialPythagoreanTriplet(int tripletSum);
+long long problem_010_sumOfPrimes(long limit);
